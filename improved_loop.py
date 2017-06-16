@@ -9,8 +9,7 @@ armed = 1
 while armed > 0:
   print "LED on"
   GPIO.output(7,GPIO.HIGH)
-  time.sleep(5)
+  time.sleep(6)
   print "LED off"
   GPIO.output(7,GPIO.LOW)
-  time.sleep(5)
-
+  time.sleep(6)
