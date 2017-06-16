@@ -1,0 +1,40 @@
+Here are some notes about how I set up my mac to automatically update the code on my RPI whenever I push to Github. You can read an article about how some people use Github with an RPI here:  http://thesociablegeek.com/node/github-continuous-deployment-to-a-raspberry-pi/
+
+The problem I have with this, is that I don't want to have to expose my RPI to the internet, which is less about security concerns than it is with the bother of setting up port forwarding, and all the things necessary.
+
+Git hooks are really useful, and are divided into two categories - client side, and server side. I got my code running fine using a client side hook "post-commit," but I want the RPI to automatically go out and grab the latest files from Github after I push them. Unfortunately, there is no client side hook like "Post-Push"
+
+So, what I did was create a script in the .git/hooks/ folder in my repo. Because I won't remember how to do with without a lot of googling next time, here's my notes:
+
+Go into the folder/repo you're working in.
+ls -a will show you all the hidden files
+cd .git  #hidden directory on a mac
+ls
+cd hooks
+ls
+nano post-push   #create the file "post-push" - it won't exist
+
+#!/bin/bash    #declare this is bash script
+echo Running Post-Push Script   #just so I can tell from the terminal that things are working as they should
+ssh pi@raspberrypi.local "cd /home/pi/alarm; git pull RaspIoT  master"   # connect to my RPI on my local LAN (ssh key already stored in keychain) and execute two
+																		 # commands. The first command changes to the github repo on my RPI, the second performs a pull
+																		 # from Github. The "RaspIoT" reference is the name of my remote repo. I should have left it as
+																		 # "origin" but oh well.
+
+Save the file.
+CHMOD 700 post-push
+
+Now that we have the script created that we want to run each time, we need to make this easy to do.
+
+I decided to use an alias so that a single command would kick off the Git Push, and the above script.
+
+To create an alias on OSX, you can just:    alias [alias_name]='command1;command2;command3'    However - note that aliases are temporary, and disappear once you close and re-open your terminal window.  To make them permanent, navigate to your home directory  (cd ~/) and create a new file  (nano .bash_profile) and create your alias there.
+
+Mine reads:  alias update='git push;.git/hooks/post-push'
+
+So now, my workflow to deploy to my RPI is:
+
+git status
+git add -A
+git commit -m "commit comment"
+update   (instead of git push)
