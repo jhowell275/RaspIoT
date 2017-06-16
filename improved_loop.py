@@ -12,4 +12,4 @@ while armed > 0:
   time.sleep(6)
   print "LED off"
   GPIO.output(7,GPIO.LOW)
-  time.sleep(6)
+  time.sleep(5)
