@@ -11,7 +11,7 @@ while (1):
   print "am inside the outer loop"
   if GPIO.input(21)==1:
     print "Alarm is armed"
-    sleep(5)
+    time.sleep(3)
   else:
     print "Alarm is disarmed"
     time.sleep(3)
