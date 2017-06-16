@@ -1,5 +1,5 @@
 # RaspIoT
-This project is to use a Raspberry Pi to extend my home alarm system to a web of sensors and responses (audio warnings, lights, etc) outside my home.
+This project is to use a Raspberry Pi to extend my home alarm system to a web of sensors and responses (audio warnings, lights, etc) outside my home, and learn a little git, github, Python, and other stuff along the way.
 
 I have a home alarm and automation system that's easy to set up automations with, but lacks the ability to use relays, and other sensors and technologies outside of its own ecosystem. By integrating it with an RPI, I can take advantage of the flexibility of the GPIO pins, and having a full Linux OS to use. I can remotely control the RPI using an app like Dataplicity or Cayenne, without having to do any port forwarding.
 

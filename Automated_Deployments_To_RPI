@@ -1,6 +1,6 @@
-Here are some notes about how I set up my mac to automatically update the code
-on my RPI whenever I push to Github. You can read an article about how some
-people use Github with an RPI here:
+Here are some notes (largely for myself) about how I set up my mac to
+automatically update the codeon my RPI whenever I push to Github. You can
+read an article about how some people use Github with an RPI here:
 http://thesociablegeek.com/node/github-continuous-deployment-to-a-raspberry-pi/
 
 The problem I have with this, is that I don't want to have to expose my RPI to

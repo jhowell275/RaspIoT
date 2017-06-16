@@ -10,16 +10,10 @@ True = 1
 while (1):
   print "am inside the outer loop"
   if GPIO.input(21)==1:
-    print "Alarm is armed"
-    time.sleep(3)
+    print "Alarm is armed - LED on"
+    GPIO.output(7,GPIO.HIGH)
+    time.sleep(4)
   else:
-    print "Alarm is disarmed"
-    time.sleep(3)
-
-
-  # print "LED on"
-  # GPIO.output(7,GPIO.HIGH)
-  # time.sleep(6)
-  # print "LED off"
-  # GPIO.output(7,GPIO.LOW)
-  # time.sleep(5)
+    print "Alarm is disarmed - LED off"
+    GPIO.output(7,GPIO.LOW)
+    time.sleep(4)
