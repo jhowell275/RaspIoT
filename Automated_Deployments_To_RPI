@@ -22,9 +22,13 @@ ls -a will show you all the hidden files
 cd .git/hooks/  #hidden directory on a mac
 nano post-push   #create the file "post-push" - it won't exist
 
-#!/bin/bash    #declare this is bash script
-echo Running Post-Push Script   #just so I can tell from the terminal that things are working as they should
-ssh pi@raspberrypi.local "cd /home/pi/alarm; git pull RaspIoT  master"
+#!/bin/bash
+echo Running Post-Push Script
+ssh pi@raspberrypi.local "cd /home/pi/alarm;git checkout .;git pull RaspIoT  master"
+PID=$(ssh pi@raspberrypi.local "ps -C python -o pid=")
+echo $PID
+ssh pi@raspberrypi.local "sudo kill -9 $PID"
+ssh -t pi@Raspberrypi.local screen sudo python /home/pi/alarm/improved_loop.py
 
 #connect to my RPI on my local LAN (ssh key already stored in keychain) and
 #execute two commands. The first command changes to the github repo on my

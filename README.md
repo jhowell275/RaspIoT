@@ -12,4 +12,4 @@ When the logic I have on the RPI dictates the alarm should be tripped, I can use
 
 The intent is to run a loop that monitors the input pins for the alarm status, and only respond to sensor inputs if/when the alarm is armed, and otherwise lie dormant.
 
-Again - this is mostly just a learning vehicle for me.
+Again - this is mostly just a learning vehicle for me, so pardon the newb mistakes
