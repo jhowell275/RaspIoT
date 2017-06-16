@@ -11,3 +11,5 @@ Status of the alarm system is passed from the alarm system to the RPI via a Zigb
 When the logic I have on the RPI dictates the alarm should be tripped, I can use a GPIO output pin to apply a charge to a zigbee door sensor (reed switch) that reports to the Alarm system. I could in theory have multiple reed switches attached to various GPIO output pins so I can tell exactly what outside my house was tripped, but the Nest cameras will show me that.
 
 The intent is to run a loop that monitors the input pins for the alarm status, and only respond to sensor inputs if/when the alarm is armed, and otherwise lie dormant.
+
+Again - this is mostly just a learning vehicle for me.
