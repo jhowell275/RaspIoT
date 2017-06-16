@@ -38,3 +38,38 @@ git status
 git add -A
 git commit -m "commit comment"
 update   (instead of git push)
+
+Here's the result:
+
+jhowellcBookPro:RaspIoT jhowell$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Automated_Deployments_To_RPI
+
+nothing added to commit but untracked files present (use "git add" to track)
+jhowellcBookPro:RaspIoT jhowell$ git add -A
+jhowellcBookPro:RaspIoT jhowell$ git commit -m "Added some notes about deployments"
+[master 00da929] Added some notes about deployments
+ 1 file changed, 40 insertions(+)
+ create mode 100644 Automated_Deployments_To_RPI
+jhowellcBookPro:RaspIoT jhowell$ update              #<---- Here's using "update" which kicks off "git push"
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.62 KiB | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/nobody1234/RaspIoT.git
+   0d273da..00da929  master -> master
+Running Post-Push Script        #<--------------  Here it triggers my script
+From https://github.com/nobody1234/RaspIoT     #<--------result of "git pull" on the RPI
+ * branch            master     -> FETCH_HEAD
+   0d273da..00da929  master     -> RaspIoT/master
+Updating 0d273da..00da929
+Fast-forward
+ Automated_Deployments_To_RPI | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+ create mode 100644 Automated_Deployments_To_RPI
+jhowellcBookPro:RaspIoT jhowell$
