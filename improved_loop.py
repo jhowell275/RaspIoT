@@ -3,12 +3,18 @@ import time
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(7,GPIO.OUT)
+GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 True = 1
 
-while True > 0:
-  print "am inside the loop"
-  time.sleep(3)
+while (1):
+  print "am inside the outer loop"
+  if GPIO.input(21)==1:
+    print "Alarm is armed"
+    sleep(5)
+  else:
+    print "Alarm is disarmed"
+    time.sleep(3)
 
 
   # print "LED on"
